@@ -235,6 +235,51 @@
     margin-top:3px;
   }
 
+  /* ---------- Collapsible detail ---------- */
+  details.detail-toggle{
+    margin-top:24px;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+  }
+  details.detail-toggle > summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:14px 18px;
+    font-weight:700;
+    font-size:0.92rem;
+    background:var(--bg-alt);
+    color:var(--ink);
+    user-select:none;
+  }
+  details.detail-toggle > summary::-webkit-details-marker{ display:none; }
+  details.detail-toggle > summary::after{
+    content:"▾";
+    font-size:0.8em;
+    color:var(--nude-dark);
+    transition:transform .2s;
+    flex:0 0 auto;
+  }
+  details.detail-toggle[open] > summary::after{ transform:rotate(180deg); }
+  details.detail-toggle .detail-body{
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    gap:26px;
+    border-top:1px solid var(--border);
+  }
+  h4.cat-label{
+    font-family:'Fraunces', serif;
+    font-size:1.05rem;
+    font-weight:600;
+    margin:0 0 10px;
+    color:var(--nude-dark);
+  }
+
   /* ---------- Status / semaphore ---------- */
   .status{
     display:inline-flex;
@@ -330,9 +375,10 @@
     <a href="#ahorro">5. Ahorro</a>
     <a href="#presupuesto">6. Presupuesto de pauta</a>
     <a href="#flow-inversion">7. Flow de inversión</a>
-    <a href="#estructura">8. Estructura de campañas</a>
-    <a href="#fases">9. Fases</a>
-    <a href="#kpis">10. KPIs de éxito</a>
+    <a href="#desempeno-categoria">8. Desempeño por categoría</a>
+    <a href="#estructura">9. Estructura de campañas</a>
+    <a href="#fases">10. Fases</a>
+    <a href="#kpis">11. KPIs de éxito</a>
   </div>
 </nav>
 
@@ -521,8 +567,111 @@
     </div>
   </section>
 
+  <section id="desempeno-categoria">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Desempeño por categoría y canal</h2></div>
+    <p class="sec-intro">Unidades y ventas acumuladas de enero a agosto, por categoría y canal de compra (WhatsApp vs. Sitio Web), comparando 2025 contra 2026.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Categoría</th><th>WhatsApp u.·$ 2025</th><th>WhatsApp u.·$ 2026</th><th>Sitio Web u.·$ 2025</th><th>Sitio Web u.·$ 2026</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Fajas</th><td class="num">2.240 · $474.262.694</td><td class="num">1.785 · $415.606.485</td><td class="num">668 · $140.867.528</td><td class="num">927 · $221.783.762</td></tr>
+          <tr><th>Short</th><td class="num">1.839 · $199.509.066</td><td class="num">1.630 · $204.757.753</td><td class="num">955 · $110.865.875</td><td class="num">1.459 · $187.505.639</td></tr>
+          <tr><th>Cinturilla</th><td class="num">357 · $40.901.371</td><td class="num">230 · $36.749.594</td><td class="num">289 · $28.656.670</td><td class="num">182 · $29.537.476</td></tr>
+          <tr><th>Brasier</th><td class="num">284 · $22.992.202</td><td class="num">180 · $17.015.996</td><td class="num">91 · $7.698.971</td><td class="num">147 · $14.378.077</td></tr>
+          <tr><th>Total</th><td class="num critical">4.720 · $737.665.333</td><td class="num critical">3.825 · $674.129.828</td><td class="num critical">2.003 · $288.089.044</td><td class="num critical">2.715 · $453.204.954</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <details class="detail-toggle">
+      <summary>Ver detalle mes a mes</summary>
+      <div class="detail-body">
+
+        <div>
+          <h4 class="cat-label">Fajas</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Mes</th><th>WhatsApp u.·$ 2025</th><th>WhatsApp u.·$ 2026</th><th>Sitio Web u.·$ 2025</th><th>Sitio Web u.·$ 2026</th></tr></thead>
+              <tbody>
+                <tr><th>Ene</th><td class="num">221 · $45.891.713</td><td class="num">221 · $50.044.300</td><td class="num">72 · $15.592.762</td><td class="num">170 · $37.496.279</td></tr>
+                <tr><th>Feb</th><td class="num">295 · $59.808.978</td><td class="num">219 · $54.412.065</td><td class="num">88 · $19.242.248</td><td class="num">108 · $26.066.927</td></tr>
+                <tr><th>Mar</th><td class="num">294 · $61.737.169</td><td class="num">240 · $57.466.623</td><td class="num">72 · $15.030.884</td><td class="num">120 · $30.813.449</td></tr>
+                <tr><th>Abr</th><td class="num">259 · $56.784.453</td><td class="num">245 · $57.544.495</td><td class="num">50 · $10.871.711</td><td class="num">111 · $26.646.107</td></tr>
+                <tr><th>May</th><td class="num">267 · $58.719.054</td><td class="num">223 · $51.558.157</td><td class="num">58 · $12.769.488</td><td class="num">131 · $30.936.149</td></tr>
+                <tr><th>Jun</th><td class="num">262 · $56.688.383</td><td class="num">207 · $46.471.590</td><td class="num">63 · $14.481.289</td><td class="num">103 · $25.025.930</td></tr>
+                <tr><th>Jul</th><td class="num">343 · $68.481.800</td><td class="num">231 · $52.140.744</td><td class="num">134 · $27.027.313</td><td class="num">104 · $24.251.162</td></tr>
+                <tr><th>Ago</th><td class="num">299 · $66.151.144</td><td class="num">199 · $45.968.511</td><td class="num">131 · $25.851.833</td><td class="num">80 · $20.547.759</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="cat-label">Short</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Mes</th><th>WhatsApp u.·$ 2025</th><th>WhatsApp u.·$ 2026</th><th>Sitio Web u.·$ 2025</th><th>Sitio Web u.·$ 2026</th></tr></thead>
+              <tbody>
+                <tr><th>Ene</th><td class="num">228 · $22.460.431</td><td class="num">195 · $24.790.397</td><td class="num">160 · $17.248.257</td><td class="num">194 · $23.778.190</td></tr>
+                <tr><th>Feb</th><td class="num">156 · $17.520.551</td><td class="num">162 · $22.382.310</td><td class="num">99 · $11.377.746</td><td class="num">146 · $20.342.447</td></tr>
+                <tr><th>Mar</th><td class="num">215 · $23.507.057</td><td class="num">185 · $21.604.151</td><td class="num">77 · $8.626.694</td><td class="num">217 · $27.519.209</td></tr>
+                <tr><th>Abr</th><td class="num">388 · $39.015.835</td><td class="num">170 · $22.434.590</td><td class="num">84 · $10.561.873</td><td class="num">125 · $16.839.828</td></tr>
+                <tr><th>May</th><td class="num">210 · $23.826.144</td><td class="num">243 · $30.762.243</td><td class="num">120 · $14.314.699</td><td class="num">175 · $22.448.160</td></tr>
+                <tr><th>Jun</th><td class="num">209 · $23.686.372</td><td class="num">188 · $25.144.784</td><td class="num">104 · $12.327.119</td><td class="num">189 · $24.258.150</td></tr>
+                <tr><th>Jul</th><td class="num">245 · $27.114.667</td><td class="num">268 · $31.526.267</td><td class="num">152 · $17.429.123</td><td class="num">165 · $20.750.658</td></tr>
+                <tr><th>Ago</th><td class="num">188 · $22.378.009</td><td class="num">219 · $26.113.011</td><td class="num">159 · $18.980.364</td><td class="num">248 · $31.568.997</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="cat-label">Cinturilla</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Mes</th><th>WhatsApp u.·$ 2025</th><th>WhatsApp u.·$ 2026</th><th>Sitio Web u.·$ 2025</th><th>Sitio Web u.·$ 2026</th></tr></thead>
+              <tbody>
+                <tr><th>Ene</th><td class="num">32 · $3.680.990</td><td class="num">43 · $6.765.354</td><td class="num">9 · $1.109.580</td><td class="num">20 · $3.483.447</td></tr>
+                <tr><th>Feb</th><td class="num">26 · $3.239.512</td><td class="num">26 · $4.478.491</td><td class="num">8 · $962.271</td><td class="num">23 · $3.867.866</td></tr>
+                <tr><th>Mar</th><td class="num">35 · $4.910.367</td><td class="num">41 · $6.960.156</td><td class="num">14 · $1.746.895</td><td class="num">29 · $4.736.653</td></tr>
+                <tr><th>Abr</th><td class="num">49 · $5.366.985</td><td class="num">22 · $3.597.235</td><td class="num">44 · $4.414.982</td><td class="num">29 · $4.648.052</td></tr>
+                <tr><th>May</th><td class="num">92 · $7.555.559</td><td class="num">19 · $3.553.555</td><td class="num">89 · $6.859.411</td><td class="num">12 · $2.119.359</td></tr>
+                <tr><th>Jun</th><td class="num">42 · $5.420.427</td><td class="num">25 · $3.791.730</td><td class="num">43 · $4.653.369</td><td class="num">28 · $4.145.359</td></tr>
+                <tr><th>Jul</th><td class="num">51 · $5.817.254</td><td class="num">27 · $3.863.612</td><td class="num">15 · $1.434.028</td><td class="num">21 · $3.314.798</td></tr>
+                <tr><th>Ago</th><td class="num">30 · $4.910.277</td><td class="num">27 · $3.739.461</td><td class="num">67 · $7.476.134</td><td class="num">20 · $3.221.942</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="cat-label">Brasier</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Mes</th><th>WhatsApp u.·$ 2025</th><th>WhatsApp u.·$ 2026</th><th>Sitio Web u.·$ 2025</th><th>Sitio Web u.·$ 2026</th></tr></thead>
+              <tbody>
+                <tr><th>Ene</th><td class="num">35 · $2.567.570</td><td class="num">17 · $1.496.961</td><td class="num">2 · $145.400</td><td class="num">22 · $2.049.877</td></tr>
+                <tr><th>Feb</th><td class="num">42 · $3.141.867</td><td class="num">21 · $1.969.571</td><td class="num">13 · $978.400</td><td class="num">20 · $1.911.760</td></tr>
+                <tr><th>Mar</th><td class="num">25 · $1.961.834</td><td class="num">27 · $2.602.084</td><td class="num">18 · $1.450.800</td><td class="num">15 · $1.543.606</td></tr>
+                <tr><th>Abr</th><td class="num">63 · $4.913.276</td><td class="num">37 · $3.297.583</td><td class="num">9 · $731.700</td><td class="num">15 · $1.547.500</td></tr>
+                <tr><th>May</th><td class="num">40 · $3.071.462</td><td class="num">9 · $870.970</td><td class="num">26 · $2.219.728</td><td class="num">10 · $972.480</td></tr>
+                <tr><th>Jun</th><td class="num">29 · $2.530.549</td><td class="num">26 · $2.528.895</td><td class="num">6 · $533.529</td><td class="num">29 · $2.772.795</td></tr>
+                <tr><th>Jul</th><td class="num">22 · $2.155.443</td><td class="num">26 · $2.554.292</td><td class="num">13 · $1.254.814</td><td class="num">15 · $1.496.545</td></tr>
+                <tr><th>Ago</th><td class="num">28 · $2.650.201</td><td class="num">17 · $1.695.640</td><td class="num">4 · $384.600</td><td class="num">21 · $2.083.514</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </details>
+  </section>
+
   <section id="estructura">
-    <div class="sec-head"><span class="sec-num">08</span><h2>Estructura de campañas</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Estructura de campañas</h2></div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Plataforma</th><th>Campaña</th><th>Detalle</th></tr></thead>
@@ -537,7 +686,7 @@
   </section>
 
   <section id="fases">
-    <div class="sec-head"><span class="sec-num">09</span><h2>Fases</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>Fases</h2></div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Fase</th><th>Trigger</th><th>Foco</th></tr></thead>
@@ -551,7 +700,7 @@
   </section>
 
   <section id="kpis">
-    <div class="sec-head"><span class="sec-num">10</span><h2>KPIs de éxito</h2></div>
+    <div class="sec-head"><span class="sec-num">11</span><h2>KPIs de éxito</h2></div>
     <p class="sec-intro">Estado calculado sobre datos reales disponibles hoy. Donde no existe línea base, se marca como pendiente de medición.</p>
     <div class="table-wrap">
       <table>
