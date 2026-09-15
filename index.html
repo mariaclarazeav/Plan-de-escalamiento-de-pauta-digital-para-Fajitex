@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plan de Escalamiento de Pauta Digital — Fajitex</title>
+<meta name="description" content="Propuesta de pauta in-house en Fajitex: diagnóstico, costos, presupuesto, estructura de campañas y KPIs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-alt:#FAF7F4;
+    --ink:#221B16;
+    --ink-soft:#5C534C;
+    --border:#E7DFD6;
+    --nude-light:#D4B8A3;
+    --nude-dark:#9C7A56;
+    --purple:#4C1D6B;
+    --green:#1E6B4F;
+    --amber:#8A4B0A;
+    --gray:#6E635A;
+    --red:#B3261E;
+    --yellow:#FFE066;
+    --radius:10px;
+    --maxw:1080px;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  @media (prefers-reduced-motion: no-preference){
+    html{scroll-behavior:smooth;}
+  }
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Instrument Sans', system-ui, -apple-system, sans-serif;
+    font-size:16px;
+    line-height:1.5;
+  }
+  img{max-width:100%;}
+  [hidden]{display:none!important;}
+
+  h1,h2,h3,.fig{
+    font-family:'Fraunces', Georgia, serif;
+    color:var(--ink);
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:var(--purple);}
+
+  /* ---------- Header / nav ---------- */
+  .hero{
+    padding:56px 20px 40px;
+    max-width:var(--maxw);
+    margin:0 auto;
+    border-bottom:1px solid var(--border);
+  }
+  .hero .eyebrow{
+    display:inline-block;
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--nude-dark);
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:clamp(1.8rem, 4.2vw, 2.8rem);
+    margin:0 0 14px;
+    line-height:1.08;
+  }
+  .hero p{
+    max-width:60ch;
+    color:var(--ink-soft);
+    font-size:1.02rem;
+    margin:0 0 28px;
+  }
+  .hero-stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+    gap:14px;
+  }
+  .stat-card{
+    background:var(--bg-alt);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:16px 18px;
+  }
+  .stat-card .num{
+    font-family:'Fraunces', serif;
+    font-size:1.7rem;
+    font-weight:700;
+    color:var(--purple);
+    display:block;
+    line-height:1.1;
+  }
+  .stat-card .lbl{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+  }
+
+  nav.tabbar{
+    position:sticky;
+    top:env(safe-area-inset-top, 0px);
+    z-index:50;
+    background:rgba(255,255,255,0.94);
+    backdrop-filter:saturate(160%) blur(6px);
+    border-bottom:1px solid var(--border);
+  }
+  nav.tabbar .inner{
+    max-width:var(--maxw);
+    margin:0 auto;
+    display:flex;
+    gap:4px;
+    overflow-x:auto;
+    padding:10px 20px;
+    scrollbar-width:thin;
+  }
+  nav.tabbar .inner::-webkit-scrollbar{height:4px;}
+  nav.tabbar a{
+    flex:0 0 auto;
+    font-size:0.86rem;
+    font-weight:600;
+    text-decoration:none;
+    color:var(--ink-soft);
+    padding:7px 12px;
+    border-radius:999px;
+    white-space:nowrap;
+    transition:background .15s, color .15s;
+  }
+  nav.tabbar a:hover{ color:var(--ink); background:var(--bg-alt); }
+  nav.tabbar a.active{
+    color:#fff;
+    background:var(--purple);
+  }
+
+  /* ---------- Main layout ---------- */
+  main{ max-width:var(--maxw); margin:0 auto; padding:0 20px; }
+  section{
+    padding:44px 0 40px;
+    border-bottom:1px solid var(--border);
+  }
+  section:last-of-type{ border-bottom:none; }
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:8px;
+    flex-wrap:wrap;
+  }
+  .sec-num{
+    font-family:'Fraunces', serif;
+    font-size:0.95rem;
+    font-weight:700;
+    color:var(--nude-dark);
+  }
+  h2{ font-size:1.5rem; margin:0; }
+  .sec-intro{
+    color:var(--ink-soft);
+    max-width:64ch;
+    margin:6px 0 22px;
+    font-size:0.98rem;
+  }
+  h3.sub{
+    font-family:'Instrument Sans', sans-serif;
+    font-size:0.88rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink-soft);
+    margin:26px 0 10px;
+  }
+
+  /* ---------- Tables ---------- */
+  .table-wrap{
+    overflow-x:auto;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+  }
+  table{
+    border-collapse:collapse;
+    width:100%;
+    min-width:520px;
+    font-size:0.92rem;
+  }
+  thead th{
+    text-align:left;
+    font-size:0.74rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:#fff;
+    background:var(--ink);
+    padding:11px 16px;
+    white-space:nowrap;
+  }
+  tbody td, tbody th{
+    padding:12px 16px;
+    border-top:1px solid var(--border);
+    vertical-align:top;
+  }
+  tbody th{
+    text-align:left;
+    font-weight:600;
+    background:var(--bg-alt);
+    white-space:nowrap;
+  }
+  tbody tr:nth-child(even) td, tbody tr:nth-child(even) th{
+    background:#FCFAF8;
+  }
+  tbody tr:hover td, tbody tr:hover th{
+    background:#F5EFE8;
+  }
+  td.num, th.num{ font-variant-numeric:tabular-nums; }
+  td.critical{
+    color:var(--purple);
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.02em;
+  }
+  td.pending, th.pending{
+    background:var(--yellow)!important;
+    color:#4A3B00;
+  }
+
+  /* ---------- Status / semaphore ---------- */
+  .status{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    font-weight:700;
+    font-size:0.86em;
+    white-space:nowrap;
+  }
+  .status::before{
+    content:"";
+    width:8px;height:8px;
+    border-radius:50%;
+    background:currentColor;
+    flex:0 0 auto;
+  }
+  .status--green{ color:var(--green); }
+  .status--amber{ color:var(--amber); }
+  .status--gray{ color:var(--gray); }
+  .status--red{ color:var(--red); }
+
+  /* ---------- Callout card ---------- */
+  .callout{
+    margin-top:20px;
+    border:1px solid var(--nude-light);
+    border-left:5px solid var(--nude-dark);
+    background:linear-gradient(180deg, #FBF4EE, #FFFFFF);
+    border-radius:var(--radius);
+    padding:18px 22px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    align-items:center;
+  }
+  .callout .callout-label{
+    font-size:0.74rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--nude-dark);
+    display:block;
+    margin-bottom:6px;
+  }
+  .callout .callout-body{ flex:1 1 260px; }
+  .callout .metric{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.9rem;
+    color:var(--purple);
+    line-height:1;
+  }
+  .callout .metric-lbl{
+    font-size:0.82rem;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+
+  footer{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:32px 20px 60px;
+    color:var(--ink-soft);
+    font-size:0.84rem;
+  }
+
+  @media (max-width:600px){
+    .hero{ padding:40px 16px 28px; }
+    section{ padding:34px 0 30px; }
+    main{ padding:0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="eyebrow">Fajitex · Pauta digital</span>
+  <h1>Plan de escalamiento: de agencia rotativa a equipo in-house</h1>
+  <p>Cinco años de estancamiento en ventas mensuales de aproximadamente <strong>$150.000.000</strong>, pese a rotar por cuatro agencias de pauta digital. Esta propuesta compara el modelo actual contra un equipo in-house: costos, presupuesto, estructura de campañas y KPIs de control.</p>
+  <div class="hero-stats">
+    <div class="stat-card"><span class="num">5 años</span><span class="lbl">de estancamiento en ventas</span></div>
+    <div class="stat-card"><span class="num">4</span><span class="lbl">agencias en menos de 2 años</span></div>
+    <div class="stat-card"><span class="num">55%–61%</span><span class="lbl">de ahorro proyectado in-house</span></div>
+    <div class="stat-card"><span class="num">$20.000.000</span><span class="lbl">presupuesto mensual de pauta</span></div>
+  </div>
+</header>
+
+<nav class="tabbar" aria-label="Navegación de secciones">
+  <div class="inner">
+    <a href="#diagnostico">1. Diagnóstico</a>
+    <a href="#no-cambiar">2. Por qué no cambiar de agencia</a>
+    <a href="#propuesta">3. Propuesta in-house</a>
+    <a href="#costo-equipo">4. Costo del equipo</a>
+    <a href="#ahorro">5. Ahorro</a>
+    <a href="#presupuesto">6. Presupuesto de pauta</a>
+    <a href="#estructura">7. Estructura de campañas</a>
+    <a href="#fases">8. Fases</a>
+    <a href="#kpis">9. KPIs de éxito</a>
+  </div>
+</nav>
+
+<main>
+
+  <section id="diagnostico">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Diagnóstico</h2></div>
+    <p class="sec-intro">Cinco años estancados en ventas mensuales de ~$150.000.000. En ese periodo se han contratado cuatro agencias distintas, sin que el problema de fondo se resuelva.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Agencia</th><th>Resultado</th></tr></thead>
+        <tbody>
+          <tr><th>Ecore</th><td><span class="status status--red">Rotada</span></td></tr>
+          <tr><th>The Data Labs</th><td><span class="status status--red">Rotada</span></td></tr>
+          <tr><th>Level Ads</th><td><span class="status status--red">Rotada</span></td></tr>
+          <tr><th>M.L.O Growth <em>(actual)</em></th><td><span class="status status--amber">Activa · umbral desalineado</span> — ROAS ≥5x interno vs. CPA 8% real requerido por el negocio</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-body">
+        <span class="callout-label">Caso ilustrativo — Ad JL003.2</span>
+        <span class="status status--amber">Pausado pese a cumplir el umbral de negocio</span>
+      </div>
+      <div>
+        <div class="metric">39 compras</div>
+        <div class="metric-lbl">CPA $17.034 — dentro del umbral</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="no-cambiar">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Por qué no simplemente buscar otra agencia</h2></div>
+    <p class="sec-intro">Cambiar de agencia no corrige el problema estructural: lo reinicia.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Problema</th><th>Por qué persiste al cambiar de agencia</th></tr></thead>
+        <tbody>
+          <tr><th>Umbral de rentabilidad</th><td>Cada agencia llega con su propio ROAS interno, no con el CPA del cliente.</td></tr>
+          <tr><th>Curva de aprendizaje</th><td>2–3 meses mínimo sin optimización real por cada cambio de agencia.</td></tr>
+          <tr><th>Patrón histórico</th><td>4 agencias en menos de 2 años: el mismo problema se repitió cada vez.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="propuesta">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Propuesta in-house</h2></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Criterio</th><th>Agencia externa</th><th>In-house</th></tr></thead>
+        <tbody>
+          <tr><th>Umbral de optimización</th><td>Fijado por la agencia (ROAS ≥5x)</td><td>Fijado por el negocio (CPA 8%)</td></tr>
+          <tr><th>Conocimiento de marca</th><td>Se reconstruye con cada cambio</td><td>Se acumula</td></tr>
+          <tr><th>Velocidad de iteración</th><td>Depende de ciclos externos</td><td>Directa</td></tr>
+          <tr><th>Costo mensual</th><td class="num">$12.500.000</td><td>Ver <a href="#costo-equipo">sección 4</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="costo-equipo">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Costo del equipo — dos opciones</h2></div>
+    <p class="sec-intro">Dos rutas para el ajuste de compensación de María Clara, más los rubros adicionales del área.</p>
+
+    <h3 class="sub">Ajuste de compensación</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Opción A (salarial)</th><th>Opción B (extrasalarial)</th></tr></thead>
+        <tbody>
+          <tr><th>Ajuste a María Clara</th><td>Base $4.300.000 → $6.000.000</td><td>Bono $2.200.000 (Art. 128 CST)</td></tr>
+          <tr><th>Costo real para Fajitex</th><td class="num critical">$2.584.000</td><td class="num critical">$2.200.000</td></tr>
+          <tr><th>Neto para María Clara</th><td class="num">$1.564.000</td><td class="num">$2.200.000</td></tr>
+          <tr><th>Nota</th><td>Cuenta para cesantías/pensión</td><td class="pending">Requiere otrosí, validar con contabilidad</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Rubros adicionales del área</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Rubro adicional</th><th>Costo mensual</th></tr></thead>
+        <tbody>
+          <tr><th>Diseñador/editor junior, medio tiempo, directo</th><td class="num">$2.280.000 – $3.040.000</td></tr>
+          <tr><th>SEMrush Pro</th><td class="num">$430.000</td></tr>
+          <tr><th>Total área (Opción A / Opción B)</th><td class="num critical">$5.294.000–$6.054.000 / $4.910.000–$5.670.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="ahorro">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Ahorro</h2></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Mensual</th><th>Anual</th></tr></thead>
+        <tbody>
+          <tr><th>Agencia actual</th><td class="num">$12.500.000</td><td class="num">$150.000.000</td></tr>
+          <tr><th>In-house (rango)</th><td class="num">$4.910.000–$6.054.000</td><td class="num">$58.920.000–$72.648.000</td></tr>
+          <tr><th>Ahorro</th><td class="num critical">55%–61%</td><td class="num critical">$77.352.000–$86.472.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="presupuesto">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Presupuesto de pauta</h2></div>
+    <p class="sec-intro">$20.000.000 mensuales, distribuidos por segmento de negocio y por etapa del funnel.</p>
+
+    <h3 class="sub">Por segmento</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Segmento</th><th>%</th><th>Monto</th><th>Canal</th></tr></thead>
+        <tbody>
+          <tr><th>B2C</th><td class="num">95%</td><td class="num">$19.000.000</td><td>Meta + Google</td></tr>
+          <tr><th>B2B</th><td class="num">5%</td><td class="num">$1.000.000</td><td>Meta</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Por etapa del funnel</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Etapa funnel</th><th>Share</th><th>Monto</th></tr></thead>
+        <tbody>
+          <tr><th>Reconocimiento</th><td class="num">20%</td><td class="num">$3.800.000</td></tr>
+          <tr><th>Consideración</th><td class="num">30%</td><td class="num">$5.700.000</td></tr>
+          <tr><th>Conversión</th><td class="num">50%</td><td class="num">$9.500.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="estructura">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Estructura de campañas</h2></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Plataforma</th><th>Campaña</th><th>Detalle</th></tr></thead>
+        <tbody>
+          <tr><th>Meta</th><td>Prospección</td><td>Por categoría (Fajas, Shorts, Cinturillas, Postquirúrgicas), máx. 6 anuncios/conjunto</td></tr>
+          <tr><th>Meta</th><td>Retargeting</td><td>Mismo esquema por categoría</td></tr>
+          <tr><th>Meta</th><td>Always On</td><td>Piezas evergreen validadas (tecnología, antes/después); no se apaga</td></tr>
+          <tr><th>Google</th><td>Search + Shopping + YouTube</td><td>Search activo; Shopping y YouTube nuevos</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="fases">
+    <div class="sec-head"><span class="sec-num">08</span><h2>Fases</h2></div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Fase</th><th>Trigger</th><th>Foco</th></tr></thead>
+        <tbody>
+          <tr><th>1. Sostener y aprender</th><td>Al decidir sobre la agencia</td><td>Ángulos ganadores, full funnel</td></tr>
+          <tr><th>2. Growth</th><td>KPIs de Fase 1 cumplidos</td><td>Escalar inversión</td></tr>
+          <tr><th>3. Internacionalización</th><td>Fase 1 y 2 sostenidas</td><td>B2B primero, INVIMA como diferencial regional</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="kpis">
+    <div class="sec-head"><span class="sec-num">09</span><h2>KPIs de éxito</h2></div>
+    <p class="sec-intro">Estado calculado sobre datos reales disponibles hoy. Donde no existe línea base, se marca como pendiente de medición.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>KPI</th><th>Meta</th><th>Estado actual</th></tr></thead>
+        <tbody>
+          <tr><th>CPA real vs. benchmark 8%</th><td>80%+ de categorías cumpliendo</td><td><span class="status status--amber">Pendiente de medición</span></td></tr>
+          <tr><th>ROAS/MER por categoría</th><td>Sostener 4,53–11,88 (Meta) / 6,24–9,7 (Google)</td><td><span class="status status--amber">Pendiente de medición</span></td></tr>
+          <tr><th>Tasa de respuesta B2Chat</th><td>Bajar de 62,7% sin respuesta a menos de 30%</td><td><span class="status status--red">No cumple — 62,7% actual</span></td></tr>
+          <tr><th>Velocidad de lanzamiento de pieza</th><td>Medir línea base desde cero</td><td><span class="status status--amber">Pendiente de medición</span></td></tr>
+          <tr><th>Ángulos probados por mes</th><td>Mínimo 2 por categoría</td><td><span class="status status--amber">Pendiente de medición</span></td></tr>
+          <tr><th>Ahorro real vs. proyectado</th><td>Verificar a 3 meses</td><td><span class="status status--amber">Pendiente de medición</span></td></tr>
+          <tr><th>Ventas totales mensuales</th><td>Salir del estancamiento en $150.000.000</td><td><span class="status status--red">No cumple — estancado</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Fajitex · Propuesta de pauta in-house. Cifras en pesos colombianos (COP).
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.tabbar a'));
+  var sections = links.map(function(a){
+    return document.querySelector(a.getAttribute('href'));
+  }).filter(Boolean);
+
+  if(!('IntersectionObserver' in window) || sections.length === 0) return;
+
+  var byId = {};
+  links.forEach(function(a){ byId[a.getAttribute('href').slice(1)] = a; });
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      var link = byId[entry.target.id];
+      if(!link) return;
+      if(entry.isIntersecting){
+        links.forEach(function(l){ l.classList.remove('active'); });
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+
+  sections.forEach(function(s){ observer.observe(s); });
+})();
+</script>
+
+</body>
+</html>
