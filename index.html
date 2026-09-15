@@ -227,6 +227,13 @@
     background:var(--yellow)!important;
     color:#4A3B00;
   }
+  .cell-note{
+    display:block;
+    font-size:0.82em;
+    font-weight:400;
+    color:var(--ink-soft);
+    margin-top:3px;
+  }
 
   /* ---------- Status / semaphore ---------- */
   .status{
@@ -309,7 +316,7 @@
   <div class="hero-stats">
     <div class="stat-card"><span class="num">5 años</span><span class="lbl">de estancamiento en ventas</span></div>
     <div class="stat-card"><span class="num">4</span><span class="lbl">agencias en menos de 2 años</span></div>
-    <div class="stat-card"><span class="num">55%–61%</span><span class="lbl">de ahorro proyectado in-house</span></div>
+    <div class="stat-card"><span class="num">48%–61%</span><span class="lbl">de ahorro proyectado in-house</span></div>
     <div class="stat-card"><span class="num">$20.000.000</span><span class="lbl">presupuesto mensual de pauta</span></div>
   </div>
 </header>
@@ -322,9 +329,10 @@
     <a href="#costo-equipo">4. Costo del equipo</a>
     <a href="#ahorro">5. Ahorro</a>
     <a href="#presupuesto">6. Presupuesto de pauta</a>
-    <a href="#estructura">7. Estructura de campañas</a>
-    <a href="#fases">8. Fases</a>
-    <a href="#kpis">9. KPIs de éxito</a>
+    <a href="#flow-inversion">7. Flow de inversión</a>
+    <a href="#estructura">8. Estructura de campañas</a>
+    <a href="#fases">9. Fases</a>
+    <a href="#kpis">10. KPIs de éxito</a>
   </div>
 </nav>
 
@@ -398,9 +406,9 @@
       <table>
         <thead><tr><th></th><th>Opción A (salarial)</th><th>Opción B (extrasalarial)</th></tr></thead>
         <tbody>
-          <tr><th>Ajuste a María Clara</th><td>Base $4.300.000 → $6.000.000</td><td>Bono $2.200.000 (Art. 128 CST)</td></tr>
-          <tr><th>Costo real para Fajitex</th><td class="num critical">$2.584.000</td><td class="num critical">$2.200.000</td></tr>
-          <tr><th>Neto para María Clara</th><td class="num">$1.564.000</td><td class="num">$2.200.000</td></tr>
+          <tr><th>Ajuste a María Clara</th><td>Base $4.300.000 → $6.300.000</td><td>Bono $2.200.000 (Art. 128 CST)</td></tr>
+          <tr><th>Costo real para Fajitex</th><td class="num critical">$3.040.000<span class="cell-note">Incremento $2.000.000 + 52% carga prestacional</span></td><td class="num critical">$2.200.000</td></tr>
+          <tr><th>Neto que le llega</th><td class="num">$5.796.000<span class="cell-note">Después de 8% deducción salud + pensión</span></td><td class="num">$2.200.000</td></tr>
           <tr><th>Nota</th><td>Cuenta para cesantías/pensión</td><td class="pending">Requiere otrosí, validar con contabilidad</td></tr>
         </tbody>
       </table>
@@ -413,7 +421,7 @@
         <tbody>
           <tr><th>Diseñador/editor junior, medio tiempo, directo</th><td class="num">$2.280.000 – $3.040.000</td></tr>
           <tr><th>SEMrush Pro</th><td class="num">$430.000</td></tr>
-          <tr><th>Total área (Opción A / Opción B)</th><td class="num critical">$5.294.000–$6.054.000 / $4.910.000–$5.670.000</td></tr>
+          <tr><th>Total área (Opción A / Opción B)</th><td class="num critical">$5.750.000–$6.510.000 / $4.910.000–$5.670.000</td></tr>
         </tbody>
       </table>
     </div>
@@ -426,8 +434,8 @@
         <thead><tr><th></th><th>Mensual</th><th>Anual</th></tr></thead>
         <tbody>
           <tr><th>Agencia actual</th><td class="num">$12.500.000</td><td class="num">$150.000.000</td></tr>
-          <tr><th>In-house (rango)</th><td class="num">$4.910.000–$6.054.000</td><td class="num">$58.920.000–$72.648.000</td></tr>
-          <tr><th>Ahorro</th><td class="num critical">55%–61%</td><td class="num critical">$77.352.000–$86.472.000</td></tr>
+          <tr><th>In-house (rango)</th><td class="num">$4.910.000–$6.510.000</td><td class="num">$58.920.000–$78.120.000</td></tr>
+          <tr><th>Ahorro</th><td class="num critical">48%–61%</td><td class="num critical">$71.880.000–$91.080.000</td></tr>
         </tbody>
       </table>
     </div>
@@ -461,8 +469,60 @@
     </div>
   </section>
 
+  <section id="flow-inversion">
+    <div class="sec-head"><span class="sec-num">07</span><h2>Estrategia de pauta — Flow de inversión mensual</h2></div>
+    <p class="sec-intro">Desglose del presupuesto de $20.000.000 por etapa, medio, formato y público — la base operativa detrás de la distribución por funnel de la sección 6.</p>
+
+    <h3 class="sub">Flow mensual B2C — $19.000.000</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Etapa</th><th>Share</th><th>Presupuesto</th><th>Medio</th><th>Formato</th><th>Segmento/Público</th><th>Método de compra</th><th>KPI primario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>Reconocimiento</th><td class="num">20%</td><td class="num">$3.800.000</td><td>Meta</td><td>Reel UGC +35</td><td>Mujer +35, bienestar diario</td><td>CPM</td><td>Alcance</td></tr>
+          <tr><th>Reconocimiento</th><td class="num">20%</td><td class="cell-note">Incluido arriba</td><td>Meta</td><td>Reel viral test (4 variantes)</td><td>Público frío, prospección amplia</td><td>CPM</td><td>Alcance</td></tr>
+          <tr><th>Consideración</th><td class="num">30%</td><td class="num">$5.700.000</td><td>Meta</td><td>Reel tecnología (por categoría)</td><td>Interés en categoría específica</td><td>CPC</td><td>Interacciones</td></tr>
+          <tr><th>Consideración</th><td class="num">30%</td><td class="cell-note">Incluido arriba</td><td>Meta</td><td>Estático 4:5 + Carrusel storytelling</td><td>Retargeting ligero, interés en compra de ropa</td><td>CPC</td><td>Interacciones</td></tr>
+          <tr><th>Consideración</th><td class="num">30%</td><td class="cell-note">Incluido arriba</td><td>Google</td><td>Search genérico</td><td>Búsqueda por categoría</td><td>CPC</td><td>Interacciones</td></tr>
+          <tr><th>Conversión</th><td class="num">50%</td><td class="num">$9.500.000</td><td>Meta</td><td>Reel antes y después</td><td>Retargeting, visitantes sin compra</td><td>CPC</td><td>Conversión</td></tr>
+          <tr><th>Conversión</th><td class="num">50%</td><td class="cell-note">Incluido arriba</td><td>Meta</td><td>Catálogo dinámico</td><td>Similares a compradores</td><td>CPC</td><td>Conversión</td></tr>
+          <tr><th>Conversión</th><td class="num">50%</td><td class="cell-note">Incluido arriba</td><td>Google</td><td>Search marca</td><td>Intención alta / búsqueda de marca</td><td>CPC</td><td>Conversión</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Flow mensual B2B — $1.000.000</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Etapa</th><th>Share</th><th>Presupuesto</th><th>Medio</th><th>Formato</th><th>Segmento/Público</th><th>Método de compra</th><th>KPI primario</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th>Conversión</th><td class="num">100%</td><td class="num">$1.000.000</td><td>Meta</td><td>Lead-gen form</td><td>Custom Audience + Lookalike 1% (médicos, restringido a Medellín)</td><td>CPL</td><td>Leads calificados</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub">Totales</h3>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Segmento</th><th>Monto</th></tr></thead>
+        <tbody>
+          <tr><th>B2C</th><td class="num">$19.000.000</td></tr>
+          <tr><th>B2B</th><td class="num">$1.000.000</td></tr>
+          <tr><th>Total</th><td class="num critical">$20.000.000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <section id="estructura">
-    <div class="sec-head"><span class="sec-num">07</span><h2>Estructura de campañas</h2></div>
+    <div class="sec-head"><span class="sec-num">08</span><h2>Estructura de campañas</h2></div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Plataforma</th><th>Campaña</th><th>Detalle</th></tr></thead>
@@ -477,7 +537,7 @@
   </section>
 
   <section id="fases">
-    <div class="sec-head"><span class="sec-num">08</span><h2>Fases</h2></div>
+    <div class="sec-head"><span class="sec-num">09</span><h2>Fases</h2></div>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Fase</th><th>Trigger</th><th>Foco</th></tr></thead>
@@ -491,7 +551,7 @@
   </section>
 
   <section id="kpis">
-    <div class="sec-head"><span class="sec-num">09</span><h2>KPIs de éxito</h2></div>
+    <div class="sec-head"><span class="sec-num">10</span><h2>KPIs de éxito</h2></div>
     <p class="sec-intro">Estado calculado sobre datos reales disponibles hoy. Donde no existe línea base, se marca como pendiente de medición.</p>
     <div class="table-wrap">
       <table>
